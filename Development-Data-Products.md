@@ -15,19 +15,32 @@ This application uses linear regression algorithm to predict the fuel efficiency
 Linear Regression Model
 ========================================================
 
-```{r, echo=FALSE, results='hide'}
-data(mtcars)
-mtcars$cyl <- factor(mtcars$cyl)
-mtcars$vs <- factor(mtcars$vs)
-mtcars$am <- factor(mtcars$am,labels=c('Automatic','Manual'))
-mtcars$gear <- factor(mtcars$gear)
-mtcars$carb <- factor(mtcars$carb)
-initial_model <- lm(mpg ~ ., data = mtcars)
-best_fit_model <- step(initial_model, direction = "both")
-```
+
 <font size=5>
-```{r, echo=FALSE}
-summary(best_fit_model)
+
+```
+
+Call:
+lm(formula = mpg ~ cyl + hp + wt + am, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9387 -1.2560 -0.4013  1.1253  5.0513 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 33.70832    2.60489  12.940 7.73e-13 ***
+cyl6        -3.03134    1.40728  -2.154  0.04068 *  
+cyl8        -2.16368    2.28425  -0.947  0.35225    
+hp          -0.03211    0.01369  -2.345  0.02693 *  
+wt          -2.49683    0.88559  -2.819  0.00908 ** 
+amManual     1.80921    1.39630   1.296  0.20646    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.41 on 26 degrees of freedom
+Multiple R-squared:  0.8659,	Adjusted R-squared:  0.8401 
+F-statistic: 33.57 on 5 and 26 DF,  p-value: 1.506e-10
 ```
 </font>
 
