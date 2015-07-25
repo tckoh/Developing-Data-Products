@@ -29,7 +29,9 @@ shinyUI(pageWithSidebar(
                      c("Automatic" = "0",
                        "Manual" = "1")),
         
-        actionButton("compute", "Compute MPG")
+        actionButton("compute", "Compute MPG"),
+        
+        h5("Select input for the above variables. Once ready, click on the Compute MPG button. The result will be displayed on the right of the screen.")
         
     ),
 
@@ -37,7 +39,7 @@ shinyUI(pageWithSidebar(
     # Show the predicted mpg value
     mainPanel(
         h3("Prediction for Mile Per Gallen:"),
-
+        
         h2(textOutput("mpgOutput"))
     )
     
