@@ -1,0 +1,45 @@
+Prediction of Fuel Efficiency using Linear Regression Algorithm
+========================================================
+
+Introduction
+========================================================
+
+This application uses linear regression algorithm to predict the fuel efficiency of motor vehicle (mpg) with four independent variables namely, no. of cylinder (cyl), gross horsepower (hp), weight (wt), and type of transmission (am).
+
+<font color="blue">
+- Dataset: mtcars
+- Regression Formula: mpg ~ cyl + hp + wt + am
+- Adjusted R-squared Value: 0.84
+</font>
+
+Linear Regression Model
+========================================================
+
+```{r, echo=FALSE, results='hide'}
+data(mtcars)
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$vs <- factor(mtcars$vs)
+mtcars$am <- factor(mtcars$am,labels=c('Automatic','Manual'))
+mtcars$gear <- factor(mtcars$gear)
+mtcars$carb <- factor(mtcars$carb)
+initial_model <- lm(mpg ~ ., data = mtcars)
+best_fit_model <- step(initial_model, direction = "both")
+```
+<font size=6>
+```{r, echo=FALSE}
+summary(best_fit_model)
+```
+</font>
+
+The Shiny Application: Input
+========================================================
+![Screenshot of Shiny App Input](shinyapp_input.png)
+
+Select input for No. of Cylinders, Gross Horsepower, Weight and Transmission. Once ready, click on the "Compute MPG" button. The result will be displayed on the right of the screen.
+
+The Shiny Application: Output
+========================================================
+![Screenshot of Shiny App Output](shinyapp_output.png)
+
+Example: The fuel efficiency of an automatic motor vehicle with 6 cylinders, gross horsepower of 250, and weighing 4000 lb is <font color="red">12.6648</font> mpg.
+
